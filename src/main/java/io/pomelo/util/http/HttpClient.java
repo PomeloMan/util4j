@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.http.Consts;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -61,12 +60,9 @@ public class HttpClient {
 	 * @throws IOException
 	 */
 	public static InputStream getMetadata(String uri, RequestType type, Map<String, Object> input) throws IOException {
-		CloseableHttpClient httpclient = HttpClients.createDefault();
 		InputStream content = null;
-		try {
+		try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
 			content = exec(httpclient, uri, type, input).getEntity().getContent();
-		} finally {
-			IOUtils.closeQuietly(httpclient);
 		}
 		return content;
 	}
@@ -79,12 +75,9 @@ public class HttpClient {
 	 * @throws IOException
 	 */
 	public static String getResult(String uri, RequestType type, Map<String, Object> input) throws IOException {
-		CloseableHttpClient httpclient = HttpClients.createDefault();
 		String content = null;
-		try {
+		try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
 			content = EntityUtils.toString(exec(httpclient, uri, type, input).getEntity());
-		} finally {
-			IOUtils.closeQuietly(httpclient);
 		}
 		return content;
 	}

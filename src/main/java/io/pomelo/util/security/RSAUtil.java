@@ -22,7 +22,6 @@ import java.security.spec.X509EncodedKeySpec;
 
 import javax.crypto.Cipher;
 
-import org.apache.commons.io.IOUtils;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
@@ -80,6 +79,7 @@ public class RSAUtil {
 
 	/**
 	 * 密钥写入文件
+	 * 
 	 * @param keyPair
 	 * @param filePath
 	 * @throws IOException
@@ -87,20 +87,15 @@ public class RSAUtil {
 	public static void generateRSAPrivateKey(KeyPair keyPair, String folder) throws IOException {
 		RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
 		String privateKeyStr = EncryptHelper.encode(privateKey.getEncoded());
-		FileWriter fileWriter = null;
-		BufferedWriter writer = null;
-		try {
-			fileWriter = new FileWriter(new File(folder, PRIVATE_KEY));
-			writer = new BufferedWriter(fileWriter);
+		try (FileWriter fileWriter = new FileWriter(new File(folder, PRIVATE_KEY));
+				BufferedWriter writer = new BufferedWriter(fileWriter)) {
 			writer.write(privateKeyStr);
-		} finally {
-			IOUtils.closeQuietly(writer);
-			IOUtils.closeQuietly(fileWriter);
 		}
 	}
 
 	/**
 	 * 公钥写入文件
+	 * 
 	 * @param keyPair
 	 * @param filePath
 	 * @throws IOException
@@ -108,20 +103,15 @@ public class RSAUtil {
 	public static void generateRSAPublicKey(KeyPair keyPair, String folder) throws IOException {
 		RSAPublicKey privateKey = (RSAPublicKey) keyPair.getPublic();
 		String publicKeyStr = EncryptHelper.encode(privateKey.getEncoded());
-		FileWriter fileWriter = null;
-		BufferedWriter writer = null;
-		try {
-			fileWriter = new FileWriter(new File(folder, PUBLIC_KEY));
-			writer = new BufferedWriter(fileWriter);
+		try (FileWriter fileWriter = new FileWriter(new File(folder, PUBLIC_KEY));
+				BufferedWriter writer = new BufferedWriter(fileWriter);) {
 			writer.write(publicKeyStr);
-		} finally {
-			IOUtils.closeQuietly(writer);
-			IOUtils.closeQuietly(fileWriter);
 		}
 	}
 
 	/**
 	 * 从文件中输入流中加载公钥/密钥
+	 * 
 	 * @param input
 	 * @param key
 	 * @return
@@ -152,6 +142,7 @@ public class RSAUtil {
 
 	/**
 	 * 从字符串中加载公钥/密钥
+	 * 
 	 * @param publicKeyStr
 	 * @param key
 	 * @return
