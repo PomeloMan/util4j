@@ -6,30 +6,56 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- * <p>日期工具类<br>Date util</p>
+ * <p>
+ * 日期工具类<br>
+ * Date util
+ * </p>
+ * 
  * @ClassName DateUtil.java
  * @author PomeloMan
  */
 public class DateUtil {
 
 	/**
-	 * <p>默认时区（GMT+8）<br>Default timezone(GMT+8)</p>
+	 * yyyy-MM-dd
+	 */
+	public final static String YYYY_MM_DD = "yyyy-MM-dd";
+	/**
+	 * MMM-yyyy
+	 */
+	public final static String MMM_YYYY = "MMM-yyyy";
+
+	/**
+	 * <p>
+	 * 默认时区（GMT+8）<br>
+	 * Default timezone(GMT+8)
+	 * </p>
 	 */
 	public final static TimeZone DEFAULT_TIMEZONE = TimeZone.getTimeZone("GMT+8");
 	/**
-	 * <p>默认地域（en）<br>Default locale(en)</p>
+	 * <p>
+	 * 默认地域（en）<br>
+	 * Default locale(en)
+	 * </p>
 	 */
 	public final static Locale DEFAULT_LOCALE = Locale.ENGLISH;
 
 	/**
-	 * <p>设置默认时区/地域<br>Set default timezone/locale</p>
+	 * <p>
+	 * 设置默认时区/地域<br>
+	 * Set default timezone/locale
+	 * </p>
 	 */
 	public static void setDefault() {
 		setDefault(DEFAULT_TIMEZONE, DEFAULT_LOCALE);
 	}
 
 	/**
-	 * <p>设置时区/地域<br>Set timezone/locale</p>
+	 * <p>
+	 * 设置时区/地域<br>
+	 * Set timezone/locale
+	 * </p>
+	 * 
 	 * @param timezone
 	 * @param locale
 	 */
@@ -39,7 +65,11 @@ public class DateUtil {
 	}
 
 	/**
-	 * <p>时间转换枚举类<br>Time conversion enumeration class</p>
+	 * <p>
+	 * 时间转换枚举类<br>
+	 * Time conversion enumeration class
+	 * </p>
+	 * 
 	 * @ClassName TimeMillis.java
 	 * @author PomeloMan
 	 */
@@ -68,10 +98,11 @@ public class DateUtil {
 
 	/**
 	 * <p>
-	 * 获取当前时间（使用getInstance()方法中的时区/地域设置）
-	 * <br>
-	 * Get the current time (using the time zone / locale in the getInstance () method)
+	 * 获取当前时间（使用getInstance()方法中的时区/地域设置） <br>
+	 * Get the current time (using the time zone / locale in the getInstance ()
+	 * method)
 	 * </p>
+	 * 
 	 * @return
 	 */
 	public static Calendar now() {
@@ -80,33 +111,36 @@ public class DateUtil {
 
 	/**
 	 * <p>
-	 * 获取两日期之差（to - from）
-	 * <br>
+	 * 获取两日期之差（to - from） <br>
 	 * Get the difference between two dates (to - from)
 	 * </p>
+	 * 
 	 * <pre>
 	 * ('2017-12-12 00:00:00', '2017-12-14 00:00:00', TimeMillis.Day) -> 2
 	 * ('2017-12-12 00:00:00', '2017-12-14 00:00:00', TimeMillis.Second) -> 172800
 	 * </pre>
+	 * 
 	 * @param from
 	 * @param to
 	 * @param field
 	 * @return
 	 */
 	public static double differ(Calendar from, Calendar to, TimeMillis field) {
-		return MathUtil.divide(MathUtil.subtract(to.getTimeInMillis(), from.getTimeInMillis()), field.getMilliseconds());
+		return MathUtil.divide(MathUtil.subtract(to.getTimeInMillis(), from.getTimeInMillis()),
+				field.getMilliseconds());
 	}
 
 	/**
 	 * <p>
-	 * 获取两日期之差（to - from）
-	 * <br>
+	 * 获取两日期之差（to - from） <br>
 	 * Get the difference between two dates (to - from)
 	 * </p>
+	 * 
 	 * <pre>
 	 * ('2017-12-12 00:00:00', '2017-12-14 00:00:00', TimeMillis.Day) -> 2
 	 * ('2017-12-12 00:00:00', '2017-12-14 00:00:00', TimeMillis.Second) -> 172800
 	 * </pre>
+	 * 
 	 * @param from
 	 * @param to
 	 * @param field
