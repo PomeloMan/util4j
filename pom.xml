@@ -31,7 +31,7 @@
 		<commons-logging.version>1.2</commons-logging.version>
 		<commons.codec.version>1.10</commons.codec.version>
 		<javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-		<junit.version>4.13</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
